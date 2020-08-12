@@ -13,6 +13,8 @@ There are a few ways for you to do that:
 - [Instrument code using babel-plugin-istanbul](https://github.com/istanbuljs/babel-plugin-istanbul)
 - [Instrument code using istanbul-lib-instrument directly](https://www.npmjs.com/package/istanbul-lib-instrument)
 
+Once you have successfully instrumented your code, you should have a `window.__coverage__` object available in the global scope of your website. This is the object that contains all coverage information for your website, and it is what this module will use to measure coverage.
+
 ## Installation
 
 ```bash

@@ -18,10 +18,16 @@ module.exports.command = function (callback) {
         },
         [coverageVariable],
         function (response) {
-            if (response.status !== 0 || !response.value) {
+            if (response.status !== 0) {
                 console.log(response);
                 throw new Error(
-                    'An error occurred while gathering coverage information'
+                    'A generic error occurred while gathering coverage information.'
+                );
+            }
+
+            if (!response.value) {
+                throw new Error(
+                    `No coverage data found. When calling window['${coverageVariable}'] within the host page, nothing was returned.`
                 );
             }
 
