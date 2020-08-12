@@ -2,7 +2,7 @@
 
 Coverage collection utility for [nightwatch.js](https://nightwatchjs.org/)
 
-Inspired by [munkyjunky's gist][https://gist.github.com/munkyjunky/7c55bafa2f11ba4c72d79a5ef314127b]
+Inspired by [munkyjunky's gist](https://gist.github.com/munkyjunky/7c55bafa2f11ba4c72d79a5ef314127b)
 
 ## Setup
 
