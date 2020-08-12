@@ -27,7 +27,9 @@ module.exports.command = function (callback) {
 
             let coverageData = parseCoverageData(response.value);
             browser.globals.coverageReporter.coverageMap.merge(coverageData);
-            callback();
+            if (callback) {
+                callback();
+            }
         }
     );
 
