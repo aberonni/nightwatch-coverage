@@ -27,7 +27,7 @@ module.exports.command = function (callback) {
 
             if (!response.value) {
                 throw new Error(
-                    `No coverage data found. When calling window['${coverageVariable}'] within the host page, nothing was returned.`
+                    `No coverage data found. When calling window['${coverageVariable}'] within the host page, nothing was returned. Make sure you have completed the setup step from the README of the nightwatch-coverage module.`
                 );
             }
 
