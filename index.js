@@ -1,20 +1,28 @@
-const { createReporter } = require('istanbul-api');
-const { createCoverageMap } = require('istanbul-lib-coverage');
+const fs = require('fs');
+const path = require('path');
+const mkdirp = require('make-dir');
+const { v4: uuidv4 } = require('uuid');
+
+const {createCoverageMap} = require('istanbul-lib-coverage');
 
 const defaultOptions = require('./options');
 
 class NightwatchCoverageReporter {
-    constructor (options) {
+    constructor(options) {
         this.options = options;
         this.coverageMap = createCoverageMap({});
-        this.reporter = createReporter();
     }
 
     save() {
-        const { coverageDirectory, coverageReporters } = this.options;
-        this.reporter.dir = coverageDirectory;
-        this.reporter.addAll(coverageReporters);
-        this.reporter.write(this.coverageMap);
+        const {coverageDirectory} = this.options;
+        mkdirp.sync(coverageDirectory);
+        const id = uuidv4(); // must be unique per test suite
+        const coverageFilename = path.resolve(coverageDirectory, id + '.json');
+        fs.writeFileSync(
+            coverageFilename,
+            JSON.stringify(this.coverageMap.toJSON()),
+            'utf-8'
+        );
     }
 }
 
